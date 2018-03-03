@@ -274,21 +274,34 @@ class bankAccount {
      */
     static currentLedger() {
 	let results = [];
-	for (i=0;i<myArray.length;i++) {
-  results = results + bankAccount.accounts.getaccountAsArray[i];
-}
+        let arrayAccounts = bankAccount.getAccountsAsArray();
+        for (let i=0; i<arrayAccounts.length; i++){
+        //    results.push(arrayAccounts[i]["accountNumber"],arrayAccounts[i]["ownerName"],arrayAccounts[i]["balance"]);
+        results [i]= {"accountNumber": arrayAccounts[i]["accountNumber"],"owner": arrayAccounts[i]["ownerName"], "balance": arrayAccounts[i]["balance"]};
+
+    }
+            return results;
+
+        }
+        }
+  //     bankAccount.getAccountsAsArray()
+    //   bankAccount.commonName(ownerName)
+//	for (i = 0; i< bankAccount.accounts.length; i++) {
+  //results = results + bankAccount.accounts.getaccountAsArray;
+//}
+
+        
 	 /* WRITE YOUR SOLUTION
 	 * 
 	 */
-        
-	return results;
-    }
-}
+
+    
 
 let centralAcct = bankAccount.createAccount("CENTRAL BANK ACCOUNT","2018-02-16","-").changeBalance(10000000,"Mafia Plc",bankAccount.createTransactionId(),"initial funds");
 let BandisAccount = bankAccount.createAccount("KEMÉNY ANDRÁS ISTVÁN","1975-02-15","psst secret").changeBalance(50000,"ATM03223",bankAccount.createTransactionId(),"cash deposit");
 centralAcct.transferTo(BandisAccount,150000,"money laundering, psst, dont tell the fbi or the irs");
 bankAccount.transfer(centralAcct,BandisAccount,150000,"some more money laundering");
+
 
 //console.log(BandisAccount.history);
 //console.log(centralAcct.history);
@@ -298,3 +311,4 @@ bankAccount.transfer(centralAcct,BandisAccount,150000,"some more money launderin
  */
 console.log(bankAccount.totalCapital());
 console.log(bankAccount.currentLedger());
+  
